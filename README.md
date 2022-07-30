@@ -33,18 +33,14 @@
 - shared/route_________________________// 페이지별 url 관리
 - redux/config/congigStore_____________//
 - redux/modules/todos__________________// 전역 데이터 관리
-
-
 - pages/TodoList (+ styles)____________// Todo List 입력, 완료, 취소, 삭제 기능 가능
-  - pages/TodoDetail (+ styles)________// 상세 Todo 확인 + 목록으로(뒤로가기) 버튼 구현
-
-
+- pages/TodoDetail (+ styles)________// 상세 Todo 확인 + 목록으로(뒤로가기) 버튼 구현
 - components/layout/Layout (+ styles)__// 페이지별 컨포넌트 구성
-  - components/header/Header (+ styles)
-  - components/form/Form (+ styles)____// 타이틀, 텍스트 입력 및 추가하기 구현
-  - components/list/List (+ styles)____// Todo 상태값 변경 가능(완료, 취소, 삭제 기능 및 상세 페이지 이동)
-    - components/todo/Todo (+ styles)__// 각각의 Todo 내용 확인
-  - components/detail/Detail (+ styles)// 상세페이지 Todo 내용 확인
+- components/header/Header (+ styles)
+- components/form/Form (+ styles)____// 타이틀, 텍스트 입력 및 추가하기 구현
+- components/list/List (+ styles)____// Todo 상태값 변경 가능(완료, 취소, 삭제 기능 및 상세 페이지 이동)
+- components/todo/Todo (+ styles)__// 각각의 Todo 내용 확인
+- components/detail/Detail (+ styles)// 상세페이지 Todo 내용 확인
 
 #### 컨포넌트 별 기능 구현 내용 및 이유
 > - Form에서 입력한 Title 및 Text 값은 useState 활요하여 입력값 저장 ::: 데이터 입력하는 이벤트는 Form 컨포넌트에서만 진행하면 되서 useState 활용
