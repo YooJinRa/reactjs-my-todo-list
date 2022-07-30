@@ -39,8 +39,6 @@ export const DELETE_TODO = "DELETE_TODO";
 
  // Reducer
  const todos = (state = initialState, action) => {
-  console.log(":: reducer -> action :: ", action);
-  console.log("REDUCER__CompleteTodo ::", action.todo);
   switch (action.type) {
     case ADD_TODO:
       return {
