@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const FormWrap = styled.div`
+const FormWrap = styled.form`
 	padding-top: 20px;
 	
 	h2 {

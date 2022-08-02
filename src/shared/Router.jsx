@@ -8,7 +8,6 @@ const Router = () => {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/' element={<TodoList />} />
-        <Route path='detail/' element={<TodoDetail />} />
         <Route path='detail/:todoId' element={<TodoDetail />} />
       </Routes>
     </BrowserRouter>

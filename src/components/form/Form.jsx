@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ADD_TODO } from '../../redux/modules/todos';
-import { customAlphabet } from 'nanoid';
+// import { customAlphabet } from 'nanoid';
+import nextId from "react-id-generator";
 import FormWrap from './styles';
 
 const Form = () => {
@@ -22,15 +23,19 @@ const Form = () => {
   }
 
   // nanoid 사용해서 숫자+대문자 포함한 8자리 문자 Todo ID 지정
-  const todoId = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 8);
+  //const todoId = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 8);
 
-  const onClickAddTodo = () => {
+  // react-id-generator
+  const todoId = nextId('todoId');
+
+  const onClickAddTodo = (event) => {
+    event.preventDefault();
     if(inputs.title ==='' || inputs.text ==='') {
       alert('제목 또는 내용을 입력해주세요...제발~!');
       return;
     } 
     dispatch({type: ADD_TODO, todo: {
-      id: todoId(),
+      id: todoId, // nonoid ::: id: todoId();
       title,
       text,
       isDone: false }
@@ -42,7 +47,7 @@ const Form = () => {
   }
 
   return(
-    <FormWrap>
+    <FormWrap type="submit" onSubmit={onClickAddTodo}>
       <h2>Please write your to-dos</h2>
       <div className='inputBox'>
         <label>TITLE</label>
@@ -51,9 +56,8 @@ const Form = () => {
         <label>TEXT</label>
         <input id='inputText' type='text' name='text' value={text} onChange={onChangeInputs} />
 
-        <button onClick={onClickAddTodo}>ADD</button>
+        <button >ADD</button>
       </div>
-      
     </FormWrap>
   );
 }

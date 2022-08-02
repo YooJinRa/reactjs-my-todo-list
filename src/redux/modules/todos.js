@@ -29,7 +29,7 @@ export const DELETE_TODO = "DELETE_TODO";
  const initialState = {
   todos: [
     {
-      id: "ABCDEFGH",
+      id: "todoId1",
       title: "Redux 공부하기",
       text: "provider, useDispatch, useSelector ...",
       isDone: false,
@@ -43,7 +43,7 @@ export const DELETE_TODO = "DELETE_TODO";
     case ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, action.todo],
+        todos: [...state.todos, action.todo], //payload
       };
     case TOGGLE_TODO:
       if(!action.todoId){

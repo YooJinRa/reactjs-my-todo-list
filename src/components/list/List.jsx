@@ -11,12 +11,12 @@ const List = () => {
     <div>
       <ListTitle>Working To-dos</ListTitle>
       {todos.map((todo) => (
-        todo.isDone === false &&
+        !todo.isDone &&
           <Todo todo={todo} key={todo.id} />
       ))}
       <ListTitle>Done To-dos</ListTitle>
       {todos.map((todo) => (
-        todo.isDone === true &&
+        todo.isDone &&
           <Todo todo={todo} key={todo.id} />
       ))}
     </div>
