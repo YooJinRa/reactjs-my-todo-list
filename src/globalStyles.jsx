@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   :root {
+    --test-color: red;
     --main-color: #01174b;
     --sub-color: #2c4494;
     --pinkpoint-color: #b909dc;
