@@ -6,10 +6,10 @@ export const TOGGLE_TODO = "TOGGLE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 
  // Action Creator
- export const addTodo = (payload) => {
+ export const addTodo = (todo) => {
   return {
     type: ADD_TODO,
-    payload,
+    todo,
   };
  };
  export const toggleTodo = (todoId) => {

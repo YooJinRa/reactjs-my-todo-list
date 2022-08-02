@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { ADD_TODO } from '../../redux/modules/todos';
+import { addTodo } from '../../redux/modules/todos';
 // import { customAlphabet } from 'nanoid';
 import nextId from "react-id-generator";
 import FormWrap from './styles';
@@ -31,15 +31,23 @@ const Form = () => {
   const onClickAddTodo = (event) => {
     event.preventDefault();
     if(inputs.title ==='' || inputs.text ==='') {
-      alert('제목 또는 내용을 입력해주세요...제발~!');
+      alert('제목과 내용을 모두 입력해주세요~!');
       return;
     } 
-    dispatch({type: ADD_TODO, todo: {
-      id: todoId, // nonoid ::: id: todoId();
-      title,
-      text,
-      isDone: false }
-    });
+    // dispatch({type: ADD_TODO, todo: {
+    //   id: todoId, // nonoid ::: id: todoId();
+    //   title,
+    //   text,
+    //   isDone: false }
+    // });
+    dispatch(
+      addTodo({
+        id: todoId,
+        title,
+        text,
+        isDone: false,
+      }
+    ));
     setInputs({
       title: '',
       text: ''
