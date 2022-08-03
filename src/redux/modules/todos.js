@@ -1,32 +1,8 @@
  // src/redux/modules/todos.js
+import { createSlice } from "@reduxjs/toolkit";
 
- // Action Value
-export const ADD_TODO = "ADD_TODO";
-export const TOGGLE_TODO = "TOGGLE_TODO";
-export const DELETE_TODO = "DELETE_TODO";
-
- // Action Creator
- export const addTodo = (todo) => {
-  return {
-    type: ADD_TODO,
-    todo,
-  };
- };
- export const toggleTodo = (todoId) => {
-  return {
-    type: TOGGLE_TODO,
-    todoId,
-  };
- }
- export const deleteTodo = (todoId) => {
-  return {
-    type: DELETE_TODO,
-    todoId,
-  }
- }
-
- // Initial State
- const initialState = {
+// initialState
+const initialState = {
   todos: [
     {
       id: "todoId1",
@@ -35,50 +11,23 @@ export const DELETE_TODO = "DELETE_TODO";
       isDone: false,
     },
   ],
- };
+}
+// Reducer
+export const todos = createSlice({
+  name: 'todos',
+  initialState,
+  reducers: {
+    addTodo: ( state, action ) => { state.todos.push(action.payload) },
+    toggleTodo: ( state, action ) => {
+      const prevTodos = [...state.todos]; //깊은 복사, 얕은 복사 (메모리 이슈)
+      state.todos = prevTodos.map((prev) => (prev.id === action.payload.id ? { ...prev, isDone: !prev.isDone } : prev ));      
+    },
+    deleteTodo: (state, action) => {
+      const prevTodos = [...state.todos]; //깊은 복사, 얕은 복사 (메모리 이슈)
+      state.todos = prevTodos.filter(( prev ) => ( prev.id !== action.payload.id && action.payload ));
+    }
+  },
+});
 
- // Reducer
- const todos = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.todo], //payload
-      };
-    case TOGGLE_TODO:
-      if(!action.todoId){
-        return {
-          ...state,
-          todos: [...state.todos]
-        };
-      }
-      return {
-        ...state,
-        todos: state.todos.map((todo) => {
-          if(todo.id !== action.todoId){
-            return {
-              ...todo
-            }
-          }
-          return {
-            ...todo,
-            isDone: !todo.isDone
-          }
-        })
-      }
-    
-    case DELETE_TODO:
-      return {
-        todos : state.todos.filter(todo => (
-        todo.id !== action.todoId &&
-          [...state.todos, action.todo]
-        ))
-      }
-
-    default :
-      return state;
-  }
- };
-
- // export default reducer
- export default todos;
+export const { addTodo, toggleTodo, deleteTodo } = todos.actions
+export default todos.reducer

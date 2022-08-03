@@ -5,7 +5,7 @@ import Todo from '../todo/Todo';
 
 const List = () => {
   const { todos } = useSelector(
-    state => (state.todos)
+    state => state.todos
   )
   return(
     <div>

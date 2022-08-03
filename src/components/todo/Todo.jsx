@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { TOGGLE_TODO, DELETE_TODO } from '../../redux/modules/todos';
+import { toggleTodo, deleteTodo } from '../../redux/modules/todos';
 import { NavLink } from 'react-router-dom';
 import TodoWrap from './styles';
 
@@ -8,10 +8,10 @@ const Todo = ({ todo }) => {
   const dispatch = useDispatch();
 
   const onClickToggleHandler = () => {
-    dispatch({type: TOGGLE_TODO, todoId: todo.id});
+    dispatch(toggleTodo(todo));
   }
   const onClickDeleteHandler = () => {
-    dispatch({type: DELETE_TODO, todoId: todo.id});
+    dispatch(deleteTodo(todo));
   }
   return(
     <TodoWrap key={todo.id}>

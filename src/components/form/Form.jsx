@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../../redux/modules/todos';
-// import { customAlphabet } from 'nanoid';
 import nextId from "react-id-generator";
 import FormWrap from './styles';
 
@@ -22,32 +21,22 @@ const Form = () => {
     });
   }
 
-  // nanoid 사용해서 숫자+대문자 포함한 8자리 문자 Todo ID 지정
-  //const todoId = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 8);
-
   // react-id-generator
   const todoId = nextId('todoId');
-
   const onClickAddTodo = (event) => {
     event.preventDefault();
     if(inputs.title ==='' || inputs.text ==='') {
       alert('제목과 내용을 모두 입력해주세요~!');
       return;
     } 
-    // dispatch({type: ADD_TODO, todo: {
-    //   id: todoId, // nonoid ::: id: todoId();
-    //   title,
-    //   text,
-    //   isDone: false }
-    // });
     dispatch(
       addTodo({
         id: todoId,
         title,
         text,
         isDone: false,
-      }
-    ));
+      })
+    );
     setInputs({
       title: '',
       text: ''

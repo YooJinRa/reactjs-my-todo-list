@@ -1,17 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import Header from '../components/header/Header';
 import Detail from '../components/detail/Detail';
 import LogoImage from '../images/logo.png';
 
 const TodoDetail = () => {
-  const location = useLocation();
+  //const location = useLocation(); // useLocation
+  const { todoId } = useParams();
   const { todos } = useSelector(
     state => (state.todos)
   )
-
   return(
     <div>
       <p style={{textAlign:'center', margin:'20px 0'}}>
@@ -20,7 +20,8 @@ const TodoDetail = () => {
       <Layout>
         <Header />
         {todos.map((todo)=>(
-          location.pathname.split('/')[2] === todo.id &&
+          //location.pathname.split('/')[2] === todo.id &&
+          todoId === todo.id &&
           <Detail key={todo.id} todo={todo} />
         ))}
     </Layout>
