@@ -19,12 +19,10 @@ export const todos = createSlice({
   reducers: {
     addTodo: ( state, action ) => { state.todos.push(action.payload) },
     toggleTodo: ( state, action ) => {
-      const prevTodos = [...state.todos]; //깊은 복사, 얕은 복사 (메모리 이슈)
-      state.todos = prevTodos.map((prev) => (prev.id === action.payload.id ? { ...prev, isDone: !prev.isDone } : prev ));      
+      state.todos = state.todos.map((todo) => (todo.id === action.payload ? { ...todo, isDone: !todo.isDone } : todo ));      
     },
     deleteTodo: (state, action) => {
-      const prevTodos = [...state.todos]; //깊은 복사, 얕은 복사 (메모리 이슈)
-      state.todos = prevTodos.filter(( prev ) => ( prev.id !== action.payload.id && action.payload ));
+      state.todos = state.todos.filter(( todo ) => ( todo.id !== action.payload && action.payload ));
     }
   },
 });

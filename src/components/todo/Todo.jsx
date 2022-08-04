@@ -8,10 +8,10 @@ const Todo = ({ todo }) => {
   const dispatch = useDispatch();
 
   const onClickToggleHandler = () => {
-    dispatch(toggleTodo(todo));
+    dispatch(toggleTodo(todo.id));
   }
   const onClickDeleteHandler = () => {
-    dispatch(deleteTodo(todo));
+    dispatch(deleteTodo(todo.id));
   }
   return(
     <TodoWrap key={todo.id}>
